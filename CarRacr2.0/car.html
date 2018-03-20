@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+
+    <head>
+        <title>Indianapolis Championchip</title>
+        
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/styles.css">
+        
+    </head>
+    
+    <body id="race">
+        <h1>Indianapolis Championchip</h1>
+        
+        <input type="button" value="Race!" id="go">
+        <input type="button" value="Reset" id="reset">
+        
+        <div id="racetrack">
+            <img src="img/lambo.png" alt="Green car" id="car1" class="car">
+            <img src="img/bugatti.png" alt="Red car" id="car2" class="car">
+        </div>
+        
+        <div id="raceInfoContainer" class="clearfix">
+            <h2>Results</h2>
+            <div id="raceInfo1" class="raceInfo">Car 1<span>resultados carro 1</span></div>
+            <div id="raceInfo2" class="raceInfo">Car 2<span>resultados carro 2</span></div>
+        </div>
+        
+        <!-- Load the CDN first -->
+        <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+        
+        <!-- If CDN fails to load, serve up the local version -->
+        <script>window.jQuery || document.write('<script src="js/jquery3.x.js"><\/script>');</script>
+        
+        <script src="js/script.js"></script>
+    </body>
+    
+</html>
+
