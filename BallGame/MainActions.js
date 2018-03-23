@@ -1,31 +1,7 @@
 // useful to have them as global variables
-var canvas, ctx, w, h; 
-var ball1 = {
-  x: 100,
-  y:100,
-  radius: 30,
-  color:'blue',
-  speedX:2,
-  speedY:1
-}
-
-var ball2 = {
-  x: 60,
-  y:130,
-  radius: 55, 
-  color:'purple',
-  speedX:3,
-  speedY:1
-}
-
-var ball3 = {
-  x: 200,
-  y:250,
-  radius: 15,
-  color:'green',
-  speedX:3,
-  speedY:5
-}
+var canvas, ctx, w, h, over=true, score=0; 
+var playerPosition;
+var balls = [];
 
 var player = {
   x:10,
@@ -37,7 +13,7 @@ var player = {
 
 window.onload = function init() {
     // called AFTER the page has been loaded
-    canvas = document.querySelector("#myCanvas");
+    canvas = document.querySelector("#Canvas");
   
     // often useful
     w = canvas.width; 
@@ -45,28 +21,74 @@ window.onload = function init() {
   
     // important, we will draw with this object
     ctx = canvas.getContext('2d');
+     
+    //create balls
+   balls =  createBalls(5);
+    //move player
+    canvas.addEventListener('mousemove',getMousePos);
   
     // ready to go !
     mainLoop();
 };
-
-function mainLoop() {
+// Main function
+function mainLoop() { 
   // 1 - clear the canvas
   ctx.clearRect(0, 0, w, h);
   
   // draw the ball and the player
   drawFilledRectangle(player);
-  drawFilledCircle(ball1);
-  drawFilledCircle(ball2);
-  drawFilledCircle(ball3);
+  drawFilledAllCircle(balls);
+  drawScore();
+  score++;
 
   // animate the ball that is bouncing all over the walls
-  moveBall(ball1);
-  moveBall(ball2);
-  moveBall(ball3);
+ moveAllBalls(balls);
+  movePlayerMouse();
   
-  // ask for a new animation frame
-  requestAnimationFrame(mainLoop);
+  // ask for a new animation frame if game is not over
+  if (over===true){
+    requestAnimationFrame(mainLoop);
+  }
+ 
+}
+
+function getMousePos(evt)
+{
+  playerPosition = playerPos(canvas, evt);
+}
+
+function playerPos(canvas, evt)
+{
+  var rect = canvas.getBoundingClientRect();
+  return {
+      x: evt.clientX - rect.left,
+      y: evt.clientY - rect.top
+  };
+}
+
+function movePlayerMouse()
+{
+  if (playerPosition !== undefined)
+  { //Check if player doesn't trespass walls
+    if (playerPosition.x + player.width/2>w)
+    {
+      playerPosition.x = w-player.width/2;
+    }
+    if (playerPosition.x + player.width/2<0)
+    {
+      playerPosition.x = 0+player.width/2;
+    }
+    if (playerPosition.y + player.width/2>h)
+    {
+      playerPosition.y = h-player.width/2;
+    }
+    if (playerPosition.y + player.width/2<0)
+    {
+      playerPosition.y = 0+player.width/2;
+    }
+    player.x = playerPosition.x;
+    player.y = playerPosition.y;
+  }
 }
 
 function moveBall(b) {
@@ -74,6 +96,7 @@ function moveBall(b) {
   b.y += b.speedY;
   
   testCollisionBallWithWalls(b);
+  testCollisionBallWithPlayer(b);
 }
 
 function testCollisionBallWithWalls(b) {
@@ -144,4 +167,67 @@ function drawFilledCircle(c) {
  
     // GOOD practice: restore the context
     ctx.restore();
+}
+
+function createBalls(cant)
+{
+  var ballAray = [];
+  var i;
+  for (i=1;i<=cant;i++)
+  {
+    var b = {
+      x: w/2,
+      y: h/2,
+      speedX: Math.random() * 5 + 5,
+      speedY: Math.random()* 5 - 5,
+      radius: 5 + 20 * Math.random(),
+      color: 'blue'
+    }
+    ballAray.push(b);
+  }
+  return ballAray;
+}
+
+function drawFilledAllCircle(b)
+{
+  b.forEach(function(b) {
+    drawFilledCircle(b);
+  });
+}
+
+function moveAllBalls(b)
+{
+  b.forEach(function(b) {
+ moveBall(b);
+  });
+}
+
+function testCollisionBallWithPlayer(b) // Needs optimization
+{//absolute value of distance between player and ball <= width of player + balls radius
+  if (Math.abs((player.y - b.y))<=(player.width/2 + b.radius)) 
+  {
+    if (Math.abs((player.x - b.x))<=(player.width/2 + b.radius))
+    {
+      player.x =  b.radius ;
+      player.y =  b.radius ;
+      over = false;
+    }
+  }
+  
+}
+
+
+
+function drawScore() {
+
+  ctx.save();
+
+  
+  ctx.fillStyle = 'yeloow';
+ ctx.font = '20px arial';
+ ctx.fillText(score,w-30,30);
+  
+
+  // GOOD practice: restore the context
+  ctx.restore();
 }
