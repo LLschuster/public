@@ -1,5 +1,5 @@
 // useful to have them as global variables
-var canvas, ctx, w, h, over=true, score=0; 
+var canvas, ctx, w, h, over=true, score=0, speddMult=1, message; 
 var playerPosition;
 var balls = [];
 
@@ -14,7 +14,7 @@ var player = {
 window.onload = function init() {
     // called AFTER the page has been loaded
     canvas = document.querySelector("#Canvas");
-  
+   message = document.querySelector("#pa");
     // often useful
     w = canvas.width; 
     h = canvas.height;  
@@ -26,6 +26,8 @@ window.onload = function init() {
    balls =  createBalls(5);
     //move player
     canvas.addEventListener('mousemove',getMousePos);
+    canvas.addEventListener('keypress',shield);
+    window.addEventListener('keypress',shield);
   
     // ready to go !
     mainLoop();
@@ -92,8 +94,8 @@ function movePlayerMouse()
 }
 
 function moveBall(b) {
-  b.x += b.speedX;
-  b.y += b.speedY;
+  b.x += b.speedX * speddMult;
+  b.y += b.speedY * speddMult;
   
   testCollisionBallWithWalls(b);
   testCollisionBallWithPlayer(b);
@@ -178,8 +180,8 @@ function createBalls(cant)
     var b = {
       x: w/2,
       y: h/2,
-      speedX: Math.random() * 5 + 5,
-      speedY: Math.random()* 5 - 5,
+      speedX: Math.random() * 1 + 5,
+      speedY: Math.random()* 1 - 5,
       radius: 5 + 20 * Math.random(),
       color: 'blue'
     }
@@ -211,6 +213,7 @@ function testCollisionBallWithPlayer(b) // Needs optimization
       player.x =  b.radius ;
       player.y =  b.radius ;
       over = false;
+      message.innerHTML = "Game is over your score is: " + "<em>"+score+"</em>";
     }
   }
   
@@ -230,4 +233,46 @@ function drawScore() {
 
   // GOOD practice: restore the context
   ctx.restore();
+}
+
+function changeBallNumber(b)
+{
+  balls = createBalls(b.value);
+}
+
+function changePlayerColor(p)
+{
+  player.color = p.value;
+}
+function changeBallSpeed(b)
+{
+  balls.forEach(function () {
+     speddMult = b.value;
+  });
+  
+}
+
+
+function restart()
+{
+  score = 0;
+  message.innerHTML = "Survive";
+  setTimeout(() => {
+    over = true; //restarts the game
+    requestAnimationFrame(mainLoop);
+  },3000);
+  
+ 
+  
+
+}
+
+function shield (evt)
+{
+  if (evt.keyCode == 32)
+  {
+    speddMult = speddMult * -1;
+    score -= 1000;
+  }
+ 
 }

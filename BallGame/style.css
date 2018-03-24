@@ -1,9 +1,17 @@
 pa {
   color: red;
-  background: red;
+  font: sans-serif 24px;
 }
 
 canvas {
   border: 5px solid black;
+ float: left;
 }
 
+#ints {
+  margin: auto;
+  margin-left: 5vw; 
+  font: sans-serif 24px;
+  border: red 5px;
+  float: left;
+}

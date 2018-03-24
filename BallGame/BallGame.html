@@ -7,9 +7,31 @@
   <title>BaKK the Mot</title>
 </head>
 <body>
-  <p id = "pa">mmg</p>
+  <div>
+  <p id = "pa">Survive</p>
+  <div>
+    <label for="inputBallNumber">number of Balls</label>
+    <input type="number" id="inputBallNumber" min="3" max="9" 
+    oninput="changeBallNumber(this)">
+    <label for="inputPlayerColor">change player color
+    </label>
+    <input type ="color" id="inputPlayerColor" onchange="changePlayerColor(this)">
+    <label for="inputBallSpeed">Change ball speed</label>
+    <input type="range" min="0.1" max="4" id="inputBallSpeed"
+    oninput="changeBallSpeed(this)">
+  </div>
+  
   <canvas id="Canvas"  width="400" height="400"></canvas>
-
+<button id="restartBtn" onclick="restart()">restart</button>
+<div id="ints">
+  <p><h1>How to play</h1>
+<p>  1-Evade the Balls.</p>
+  <p>2-Use space for godMode, will lose 1000 points.</p>
+  <p>3-Enjoy.</p>
+  <p>4-Customize Game with the settings above.</p>
+</p>
+</div>
+</div>
   <script src="MainActions.js"></script>
   <link rel= "stylesheet" type= "text/css" href= "style.css">
 </body>
