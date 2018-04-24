@@ -1,9 +1,11 @@
-pa {
+#pa {
   color: red;
-  font: sans-serif 24px;
+  font: sans-serif 120px;
+  font-size: 48px;
 }
 
 canvas {
+  margin-top: 10px;
   border: 5px solid black;
  float: left;
 }
@@ -14,4 +16,23 @@ canvas {
   font: sans-serif 24px;
   border: red 5px;
   float: left;
+}
+
+
+@keyframes colorSwift {
+  0%   {background-color: red;}
+  25%  {background-color: yellow;}
+  50%  {background-color: blue;}
+  100% {background-color: green;}
+}
+
+#restartBtn:hover {
+  animation-name: colorSwift;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+#restartBtn {
+  margin-bottom: 2%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serifl;
+  float: inherit;
 }

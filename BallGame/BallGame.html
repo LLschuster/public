@@ -7,13 +7,25 @@
   <title>BaKK the Mot</title>
 </head>
 <body>
+  <audio
+  src="https://mainline.i3s.unice.fr/mooc/SkywardBound/assets/sounds/humbug.mp3"
+  id="audioPlayer">
+  
+  </audio>
+  <audio
+  src="sounds/loseSound.wav"
+  id="audioPlayer2">
+  
+  </audio>
+
   <div>
   <p id = "pa">Survive</p>
+  <button id="restartBtn" onclick="restart()">restart</button> 
   <div>
-    <label for="inputBallNumber">number of Balls</label>
+    <label for="inputBallNumber">Number of Balls</label>
     <input type="number" id="inputBallNumber" min="3" max="9" 
     oninput="changeBallNumber(this)">
-    <label for="inputPlayerColor">change player color
+    <label for="inputPlayerColor">Change player color
     </label>
     <input type ="color" id="inputPlayerColor" onchange="changePlayerColor(this)">
     <label for="inputBallSpeed">Change ball speed</label>
@@ -22,7 +34,7 @@
   </div>
   
   <canvas id="Canvas"  width="400" height="400"></canvas>
-<button id="restartBtn" onclick="restart()">restart</button>
+
 <div id="ints">
   <p><h1>How to play</h1>
 <p>  1-Evade the Balls.</p>
@@ -32,7 +44,13 @@
 </p>
 </div>
 </div>
+
   <script src="MainActions.js"></script>
+  <script src="balls.js"></script>
+  <script src="load.js"></script>
+  <script src="collisions.js"></script>
+  <script src="player.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.9/howler.core.min.js"></script>
   <link rel= "stylesheet" type= "text/css" href= "style.css">
 </body>
 </html>
