@@ -3,9 +3,19 @@ window.onload = function init() {
   //play background sound
   playBackgroundSound();
     // called AFTER the page has been loaded
-    
+    for (let x=0;x<10;x++)
+    {
+      if (localStorage.getItem("score"+x.toString()) != null)
+      {var score = localStorage.getItem("score"+x.toString());
+      scoreList.push(parseInt(score));
+      sortedScore.push(parseInt(score));
+    }  
+    }
+    nlabel = scoreList.length-1;//to identified the scores of each playthrough
     canvas = document.querySelector("#Canvas");
    message = document.querySelector("#pa");
+    tableFrame = document.querySelector("#scoreTable");
+   table = document.createElement("table");
    
     // often useful
     w = canvas.width; 

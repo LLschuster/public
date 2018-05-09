@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>A contact manager, v3</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+        <form onsubmit="return formSubmitted();">
+                <fieldset>
+                    <legend>Personal informations</legend>
+                    <label>
+                        Name :
+                        <input type="text" id="name" required>
+                    </label>
+                    <label>
+                        Email :
+                        <input type="email" id="email" required>
+                    </label>
+                    <br>
+                    <button>Add new Contact</button>
+                </fieldset>
+            </form>
+    <p>List of contacts</p>
+    <div id="contacts"></div>
+    <div>
+        <button id="loadBtn" onclick="loadContacts()">Load</button>
+        <button id="saveBtn" onclick="saveContacts()">save</button>
+        <button id="emptyBtn" onclick="emptyContacts()">empty</button>
+    </div>
+    <script src="main.js"></script>
+    <script src="test.js"></script>
+    <link rel= "stylesheet" type= "text/css" href= "style.css">
+</body>
+</html>

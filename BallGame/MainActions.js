@@ -1,9 +1,10 @@
 // useful to have them as global variables
-var canvas, ctx, w, h, over=true, score=0, speddMult=1, message; 
+var canvas, ctx, w, h, over=true, score=0, speddMult=1, message, tableFrame, table, nlabel; 
 let backSound;
 var playerPosition;
 var balls=[];
-
+var scoreList=[];
+var sortedScore=[];
 
 // Main function
 function mainLoop() { 
@@ -68,6 +69,7 @@ function changeBallSpeed(b)
 function restart()
 {
   score = 0;
+  table.innerHTML = " ";
   message.innerHTML = "Survive";
   setTimeout(() => {
     over = true; //restarts the game
@@ -84,3 +86,24 @@ function shield (evt)  // code for god mode
   }
  
 }
+
+
+function showScores(evt)
+{
+  table.innerHTML = "<caption><p>Best records</p></caption> ";
+   
+   sortedScore = sortedScore.sort(function(a,b){return b-a});
+  var row;
+  for (let i =0;i<sortedScore.length;i++)
+  {
+    var getScore = sortedScore[i];
+   row =  table.insertRow();
+   row.innerHTML = "<td>"+ getScore+"</td>";
+  }
+ 
+   
+
+  tableFrame.appendChild(table);
+}
+
+

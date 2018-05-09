@@ -36,3 +36,29 @@ canvas {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serifl;
   float: inherit;
 }
+
+#scoreBtn:hover {
+  animation-name: colorSwift;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+#scoreBtn {
+  margin-bottom: 2%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serifl;
+  float: inherit;
+}
+
+#scoreTable {
+  float: right;
+  padding: 10px;
+  border: 5px solid black;
+  width: fit-content;
+}
+
+#scoreTable tr:nth-child(even) {
+  background-color: blue;
+}
+
+#scoreTable tr:hover {
+  background-color: fuchsia;
+}
