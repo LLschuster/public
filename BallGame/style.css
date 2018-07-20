@@ -4,15 +4,24 @@
   font-size: 48px;
 }
 
+#mainContent {
+text-align: center;
+font-family:  Helvetica, sans-serif;
+font-size: 14px;
+background: lightblue;
+
+height: 100%;
+}
+
 canvas {
   margin-top: 10px;
   border: 5px solid black;
- float: left;
+  margin-right: 190px;
 }
 
 #ints {
-  margin: auto;
-  margin-left: 5vw; 
+  margin: 10px 50px;
+  
   font: sans-serif 24px;
   border: red 5px;
   float: left;
@@ -51,8 +60,9 @@ canvas {
 #scoreTable {
   float: right;
   padding: 10px;
-  border: 5px solid black;
+  margin-right: 200px;
   width: fit-content;
+  font-size: 20px;
 }
 
 #scoreTable tr:nth-child(even) {
@@ -62,3 +72,20 @@ canvas {
 #scoreTable tr:hover {
   background-color: fuchsia;
 }
+
+footer{
+  background: lightgray;
+  padding: 12px;
+  margin-block-end: 0%;
+}
+
+nav#divFooter ul li {
+  
+  display: inline;
+  margin-top: 95px;
+  width: 100%;
+  height: 30px;
+  font-family:  Helvetica, sans-serif;
+font-size: 14px;
+}
+

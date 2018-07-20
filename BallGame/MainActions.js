@@ -44,7 +44,7 @@ function drawScore() {
   ctx.save();
   ctx.fillStyle = 'yellow';
  ctx.font = '20px arial';
- ctx.fillText(score,w-30,30);
+ ctx.fillText(score,w-50,30);
   
   // GOOD practice: restore the context
   ctx.restore();
