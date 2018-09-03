@@ -1,72 +1,70 @@
-
-
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <title>BaKK the Mot</title>
+    <meta charset="utf-8">
+    <title>Survive the ball</title>
 </head>
+
 <body>
-  <audio
-  src="https://mainline.i3s.unice.fr/mooc/SkywardBound/assets/sounds/humbug.mp3"
-  id="audioPlayer">
+    <audio src="https://mainline.i3s.unice.fr/mooc/SkywardBound/assets/sounds/humbug.mp3" id="audioPlayer">
   
   </audio>
-  <audio
-  src="sounds/loseSound.wav"
-  id="audioPlayer2">
+    <audio src="sounds/loseSound.wav" id="audioPlayer2">
   
   </audio>
 
-  <div id="mainContent">
-  <p id = "pa">Survive</p>
-  <div id ="scoreTable">
+    <div id="mainContent">
+        <p id="pa">Survive</p>
+        <div id="scoreTable">
 
-    </div>
-  <div id="ints"> <!-- how to play div -->
-      <p><h1>How to play</h1>
-    <p>  1-Evade the Balls.</p>
-      <p>2-Use space for godMode, will lose 1000 points.</p>
-      <p>3-Enjoy.</p>
-      <p>4-Customize Game with the settings below.</p>
-    </p>
-    </div>
-  <canvas id="Canvas"  width="400" height="400"></canvas>
-  <div>
-  <button id="restartBtn" onclick="restart()">restart</button> 
-  <button id="scoreBtn" onclick="showScores()">Show records</button>
- 
-</div>
-</div>
+        </div>
+        <div id="ints">
+            <!-- how to play div -->
+            <p>
+                <h1>How to play</h1>
+                <p> 1-Evade the Balls.</p>
+                <p>2-Use space for godMode, will lose 1000 points.</p>
+                <p>3-Enjoy.</p>
+                <p>4-Customize Game with the settings below.</p>
+            </p>
+        </div>
+        <canvas id="Canvas" width="400" height="400"></canvas>
+        <div>
+            <button id="restartBtn" onclick="restart()">restart</button>
+            <button id="scoreBtn" onclick="showScores()">Show records</button>
 
-<footer>
-    <nav id="divFooter"> <!-- customization div -->
-      <ul>
-        <li><label for="inputBallNumber">Number of Balls</label>
-          <input type="number" id="inputBallNumber" min="3" max="9" 
-          oninput="changeBallNumber(this)"></li>
-      
-      <li><label for="inputPlayerColor">Change player color
+        </div>
+    </div>
+
+    <footer>
+        <nav id="divFooter">
+            <!-- customization div -->
+            <ul>
+                <li><label for="inputBallNumber">Number of Balls</label>
+                    <input type="number" id="inputBallNumber" min="3" max="9" value="5" oninput="changeBallNumber(this)"></li>
+
+                <li><label for="inputPlayerColor">Change player color
       </label>
-      <input type ="color" id="inputPlayerColor" onchange="changePlayerColor(this)">
-    </li>
-    <li>
-      <label for="inputBallSpeed">Change ball speed</label>
-      <input type="range" min="0.1" max="4" id="inputBallSpeed"
-      oninput="changeBallSpeed(this)">
-    </li>
-    </ul>
-    </nav>
-   
-</footer>
+                    <input type="color" id="inputPlayerColor" onchange="changePlayerColor(this)">
+                </li>
+                <li>
+                    <label for="inputBallSpeed">Change ball speed</label>
+                    <input type="range" min="0.1" max="4" id="inputBallSpeed" oninput="changeBallSpeed(this)">
+                </li>
+            </ul>
+        </nav>
 
-  <script src="MainActions.js"></script>
-  <script src="balls.js"></script>
-  <script src="load.js"></script>
-  <script src="collisions.js"></script>
-  <script src="player.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.9/howler.core.min.js"></script>
-  <link rel= "stylesheet" type= "text/css" href= "style.css">
+    </footer>
+
+    <script src="MainActions.js"></script>
+    <script src="balls.js"></script>
+    <script src="load.js"></script>
+    <script src="collisions.js"></script>
+    <script src="player.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.9/howler.core.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </body>
-</html>
 
+</html>
